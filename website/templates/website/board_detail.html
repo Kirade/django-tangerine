@@ -1,0 +1,8 @@
+{% extends 'website/base.html'%}
+
+{%  block content %}
+    {{ board_obj.text }}<br/>
+
+    <a href = "{% url 'board_edit' pk=board_obj.pk %}">게시글 수정</a>
+
+{% endblock %}

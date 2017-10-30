@@ -1,0 +1,15 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+<body>
+    안녕하세요? 인덱스 페이지 입니다.<br/>
+
+<div>
+    {% for obj in board_obj %}
+        <a href = "{% url 'board_detail' pk=obj.pk %}">{{ obj.title }}</a>
+    {% endfor %}
+</div>
+    <div>
+        <a href = "{% url 'board_new' %}">게시글 추가 </a>
+
+{% endblock %}
