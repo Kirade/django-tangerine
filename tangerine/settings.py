@@ -17,7 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # /User/Jay/Desktop/Github_Dev/django_tangerine
 
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -80,7 +79,7 @@ WSGI_APPLICATION = 'tangerine.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS':{
+        'OPTIONS': {
             'read_default_file': os.path.join(BASE_DIR, 'database.cnf'),
         }
     }
@@ -111,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko-KP'
 
-#TIME_ZONE = 'ROK'
+# TIME_ZONE = 'ROK'
 TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
@@ -126,8 +125,23 @@ USE_TZ = True
 # Django Girls - BASE_DIR, 와 'static' 합
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'website/static'),
+)
 
 # Media files ( image, file, etc. )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Login
+''' 
+Default
+Login - account/login
+Logout - account/logout
+'''
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+
 

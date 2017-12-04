@@ -1,0 +1,13 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+    <div id="wrapper">
+    {% for obj in board_obj %}
+        <a href = "{% url 'board_detail' pk=obj.pk %}">{{ obj.title }}</a>
+    {% endfor %}
+
+        <a href = "{% url 'board_new' %}">게시글 추가 </a>
+
+    </div>
+
+{% endblock %}

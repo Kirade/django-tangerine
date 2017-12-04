@@ -11,13 +11,22 @@ def index_view(request):
     return render(request, 'website/index.html', {'board_obj': board_obj})
 
 
+def intro(request):
+    model_obj = None
+    return render(request, 'website/intro.html', {'obj': model_obj})
+
+
+def board_list(request):
+    board_obj = Board.objects.all()
+    return render(request, 'website/board/list.html', {'board_obj': board_obj})
+
+
 def board_detail(request, pk):
     board_obj = get_object_or_404(Board, pk=pk)
-    return render(request, 'website/board_detail.html', {'board_obj': board_obj})
+    return render(request, 'website/board/detail.html', {'board_obj': board_obj})
 
 
 def board_new(request):
-
     if request.method == 'POST':
         form = BoardForm(request.POST)
 
@@ -31,11 +40,10 @@ def board_new(request):
     else:
         form = BoardForm
 
-    return render(request, 'website/board_edit.html', {'form': form})
+    return render(request, 'website/board/edit.html', {'form': form})
 
 
 def board_edit(request, pk):
-
     board = get_object_or_404(Board, pk=pk)
     if request.method == 'POST':
         form = BoardForm(request.POST, instance=board)
@@ -47,7 +55,14 @@ def board_edit(request, pk):
     else:
         form = BoardForm(instance=board)
 
-    return render(request, 'website/board_edit.html', {'form': form})
+    return render(request, 'website/board/edit.html', {'form': form})
 
 
+def order(request):
+    model_obj = None
+    return render(request, 'website/order/index.html', {'obj': model_obj})
 
+
+def faq(request):
+    model_obj = None
+    return render(request, 'website/faq/index.html', {'obj': model_obj})
