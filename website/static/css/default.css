@@ -164,7 +164,7 @@ ul.style2 li
 {
 	border-top: solid 1px #E5E5E5;
 	padding: 0.80em 0 0.80em 0;
-	font-family: 0.80em;
+	font-family: 'Source Sans Pro', sans-serif;;
 }
 
 ul.style2 li:before
@@ -202,7 +202,7 @@ ul.style3 li
 {
 	border-top: solid 1px rgba(255,255,255,.2);
 	padding: 1em 0 1em 0;
-	font-family: 0.80em;
+	font-family: 'Source Sans Pro', sans-serif;;
 }
 
 ul.style3 li:before
@@ -367,7 +367,7 @@ ul.contact li a.icon-rss:before
 	{
 		overflow: hidden;
 		padding: 5em 0em 0em 0em;
-		background: #FFC000 url(images/overlay.png) repeat;
+		background: #FFC000;
 	}
 
 	#header
@@ -726,7 +726,6 @@ ul.contact li a.icon-rss:before
 	#header-featured
 	{
 		height: 30em;
-		background-image: url(images/banner.jpg);
 		background-position: center;
 		background-size: cover;
 	}

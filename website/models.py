@@ -14,9 +14,9 @@ class Board(models.Model):
 
 
 class Profile(User):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address = models.CharField(max_length=200)
-    phone_number = models.CharField(max_length=20)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, parent_link=True)
+    address = models.CharField(max_length=200, null=True)
+    phone_number = models.CharField(max_length=20, null=True)
 
 
 class Product(models.Model):

@@ -1,13 +1,14 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index_view, name='index'),
-    url(r'^intro/', views.intro, name='intro'),
-    url(r'^board/', views.board_list, name='board_list'),
-    url(r'^board/detail/(?P<pk>\d+)/$', views.board_detail, name='board_detail'),
-    url(r'^board/new/$', views.board_new, name='board_new'),
-    url(r'^board/(?P<pk>\d+)/edit/$', views.board_edit, name='board_edit'),
-    url(r'^order/', views.order, name='order'),
-    url(r'^faq/', views.faq, name='faq'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('intro/', views.IntroView.as_view(), name='intro'),
+    path('product/', views.ProductListView.as_view(), name='product-list'),
+    path('board/', views.BoardListView.as_view(), name='board-list'),
+    path('board/detail/<int:pk>/', views.BoardDetailView.as_view(), name='board-detail'),
+    path('board/new/', views.board_new, name='board-new'),
+    path('board/<int:pk>/edit/', views.board_edit, name='board-edit'),
+    path('order/', views.order, name='order'),
+    path('faq/', views.faq, name='faq'),
 ]

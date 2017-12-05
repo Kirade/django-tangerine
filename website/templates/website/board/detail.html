@@ -1,8 +1,9 @@
 {% extends 'website/base.html' %}
 
 {%  block content %}
+    <div id="wrapper">
     {{ board_obj.text }}<br/>
 
-    <a href = "{% url 'board_edit' pk=board_obj.pk %}">게시글 수정</a>
-
+    <a href = "{% url 'board-edit' pk=board_obj.pk %}">게시글 수정</a>
+    </div>
 {% endblock %}
