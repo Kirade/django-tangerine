@@ -44,11 +44,6 @@ class BoardDetailView(DetailView):
     template_name = 'website/board/detail.html'
     model = Board
     context_object_name = 'board_obj'
-    
-
-def board_detail(request, pk):
-    board_obj = get_object_or_404(Board, pk=pk)
-    return render(request, 'website/board/detail.html', {'board_obj': board_obj})
 
 
 def board_new(request):
