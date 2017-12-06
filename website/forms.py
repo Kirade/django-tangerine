@@ -7,3 +7,5 @@ class BoardForm(forms.ModelForm):
     class Meta:
         model = Board
         fields = ('title', 'text', )
+
+class RegisterForm():

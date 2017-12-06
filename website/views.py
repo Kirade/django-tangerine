@@ -3,6 +3,8 @@ from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 
 from .models import Board, Product
 
@@ -65,3 +67,10 @@ class OrderView(TemplateView):
 
 class FaqView(TemplateView):
     template_name = 'website/faq/index.html'
+
+
+class RegisterView(CreateView):
+    template_name = 'website/registration/register.html'
+    model = User
+    fields = ['username', 'password', 'email', ]
+    success_url = reverse_lazy('login')
