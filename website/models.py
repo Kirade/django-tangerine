@@ -13,10 +13,25 @@ class Board(models.Model):
         return self.title
 
 
+class ProfileManager(models.Manager):
+    def create_profile(self, user_instance):
+        user = self.create(user=user_instance)
+        user.username = user_instance.username
+        user.email = user_instance.email
+        user.password = user_instance.password
+
+        return user
+
+
 class Profile(User):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, parent_link=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     address = models.CharField(max_length=200, null=True)
     phone_number = models.CharField(max_length=20, null=True)
+
+    objects = ProfileManager()
+
+    def _str_(self):
+        return self.user.username
 
 
 class Product(models.Model):
