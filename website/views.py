@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.utils import timezone
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView
 
 from .models import Board, Product
-from .forms import BoardForm
 
 
 class IndexView(TemplateView):
@@ -46,43 +45,23 @@ class BoardDetailView(DetailView):
     context_object_name = 'board_obj'
 
 
-def board_new(request):
-    if request.method == 'POST':
-        form = BoardForm(request.POST)
-
-        if form.is_valid():
-            board = form.save(commit=False)
-            board.created_date = timezone.now()
-            board.save()
-
-            return redirect('board-detail', pk=board.pk)
-
-    else:
-        form = BoardForm
-
-    return render(request, 'website/board/edit.html', {'form': form})
+class BoardCreateView(CreateView):
+    template_name = 'website/board/edit.html'
+    model = Board
+    fields = ['title', 'text', ]
+    success_url = '/board/'
 
 
-def board_edit(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    if request.method == 'POST':
-        form = BoardForm(request.POST, instance=board)
-        if form.is_valid():
-            board = form.save(commit=False)
-            board.created_date = timezone.now()
-            board.save()
-            return redirect('board-detail', pk=board.pk)
-    else:
-        form = BoardForm(instance=board)
-
-    return render(request, 'website/board/edit.html', {'form': form})
+class BoardUpdateView(UpdateView):
+    template_name = 'website/board/edit.html'
+    model = Board
+    fields = ['title', 'text', ]
+    success_url = '/board/'
 
 
-def order(request):
-    model_obj = None
-    return render(request, 'website/order/index.html', {'obj': model_obj})
+class OrderView(TemplateView):
+    template_name = 'website/order/index.html'
 
 
-def faq(request):
-    model_obj = None
-    return render(request, 'website/faq/index.html', {'obj': model_obj})
+class FaqView(TemplateView):
+    template_name = 'website/faq/index.html'
