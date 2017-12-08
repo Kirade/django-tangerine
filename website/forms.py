@@ -8,4 +8,4 @@ class BoardForm(forms.ModelForm):
         model = Board
         fields = ('title', 'text', )
 
-class RegisterForm():
+# class RegisterForm():
