@@ -18,7 +18,17 @@ header h1{
     color: white;
 }
 
-nav a, nav p{
+.navbar-inverse .navbar-text{
     font-weight: normal;
-    color: white;
+    color: #FFC000;
+}
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
 }

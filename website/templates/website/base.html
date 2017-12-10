@@ -37,9 +37,6 @@
 				<li><a href="{% url 'board-list' %}" accesskey="4" title="">게시판</a></li>
 				<li><a href="{% url 'order' %}" accesskey="5" title="">주문/배송조회</a></li>
 				<li><a href="{% url 'faq' %}" accesskey="6" title="">FAQ</a></li>
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
                 {% if user.is_active %}
                     <li><p class="navbar-text">Hi! {{ user.username }} </p></li>
                     <li><a href="{% url 'logout' %}" accesskey="6" title="">로그아웃</a></li>
