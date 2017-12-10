@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{%  load staticfiles %}
+<html>
+
+{% include "website/_head.html" %}
+
+<body>
+
+<header id="header-wrapper">
+{#<header class="container-fluid">#}
+	<div id="header" class="container">
+		<div id="logo">
+			<span class="icon icon-group"></span>
+            <i class="fa fa-users fa-5x" aria-hidden="true" style="color: white"></i>
+			<h1><a href="#">감귤이야기</a></h1>
+			<span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
+		</div>
+		<div id="triangle-up"></div>
+	</div>
+</header>
+
+<nav id="menu-wrapper">
+		<div id="menu">
+			<ul>
+				<li class="current_page_item"><a href="{% url 'index' %}" accesskey="1" title="">홈페이지</a></li>
+				<li><a href="{% url 'intro' %}" accesskey="2" title="">농장 소개</a></li>
+                <li><a href="{% url 'product-list' %}" accesskey="3" title="">상품 구매</a></li>
+				<li><a href="{% url 'board-list' %}" accesskey="4" title="">게시판</a></li>
+				<li><a href="{% url 'order' %}" accesskey="5" title="">주문/배송조회</a></li>
+				<li><a href="{% url 'faq' %}" accesskey="6" title="">FAQ</a></li>
+                {% if user.is_active %}
+                    <li style="color: white">Hi! {{ user.username }} </li>
+                    <li><a href="{% url 'logout' %}" accesskey="6" title="">로그아웃</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" accesskey="6" title="">로그인</a></li>
+                    <li><a href="{% url 'register' %}" accesskey="6" title="">회원가입</a></li>
+                {% endif %}
+
+			</ul>
+		</div>
+</nav>
+
+{% block content %}
+{%  endblock %}
+
+<footer>
+    <div id="stamp" class="container">
+        <div class="hexagon"><span class="icon icon-wrench"></span></div>
+    </div>
+    <div id="copyright" class="container">
+        <p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+    </div>
+</footer>
+</body>
+</html>

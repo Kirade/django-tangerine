@@ -19,6 +19,8 @@ class ProfileManager(models.Manager):
         user.username = user_instance.username
         user.email = user_instance.email
         user.password = user_instance.password
+        user.first_name = user_instance.first_name
+        user.last_name = user_instance.last_name
 
         return user
 

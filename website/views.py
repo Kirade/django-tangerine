@@ -5,6 +5,9 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
+from django.views.generic.edit import FormView
+from .forms import RegisterForm
+
 
 from .models import Board, Product
 
@@ -70,7 +73,7 @@ class FaqView(TemplateView):
 
 
 class RegisterView(CreateView):
-    template_name = 'website/registration/register.html'
-    model = User
-    fields = ['username', 'password', 'email', ]
+    template_name='website/registration/register.html'
+    form_class = RegisterForm
     success_url = reverse_lazy('login')
+

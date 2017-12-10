@@ -1,4 +1,6 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
+from tangerine import settings
 from . import views
 
 urlpatterns = [
@@ -12,5 +14,13 @@ urlpatterns = [
     path('order/', views.OrderView.as_view(), name='order'),
     path('faq/', views.FaqView.as_view(), name='faq'),
     path('register/', views.RegisterView.as_view(), name='register'),
+    path('registration/login/',
+         auth_views.login,
+         name='login',
+         kwargs={'template_name': 'website/registration/login.html', }),
+    path('registration/logout/',
+         auth_views.logout,
+         name='logout',
+         kwargs={'next_page': settings.LOGOUT_REDIRECT_URL, }),
 
 ]
