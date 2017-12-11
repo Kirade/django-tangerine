@@ -29,6 +29,7 @@ class Profile(User):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     address = models.CharField(max_length=200, null=True)
     phone_number = models.CharField(max_length=20, null=True)
+    full_name = models.CharField(max_length=20, null=True)
 
     objects = ProfileManager()
 

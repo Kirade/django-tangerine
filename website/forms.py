@@ -13,21 +13,18 @@ class BoardForm(forms.ModelForm):
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
-    first_name = forms.CharField(max_length=20)
-    last_name = forms.CharField(max_length=20)
     address = forms.CharField(max_length=100)
     phone_number = forms.CharField(max_length=20)
+    full_name = forms.CharField(max_length=20)
 
     class Meta:
         model = User
-        fields = ('username','password1','password2', 'email', 'first_name', 'last_name', 'address', 'phone_number',)
+        fields = ('username','password1','password2', 'email', 'full_name', 'address', 'phone_number',)
 
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
 
         user.email = self.cleaned_data['email']
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
 
         if commit:
             user.save()
@@ -35,6 +32,7 @@ class RegisterForm(UserCreationForm):
             profile = Profile.objects.get(user_id=user.id)
             profile.address = self.cleaned_data['address']
             profile.phone_number = self.cleaned_data['phone_number']
+            profile.full_name = self.cleaned_data['full_name']
             profile.save()
 
         return user
