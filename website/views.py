@@ -3,6 +3,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from .forms import RegisterForm, MyPageForm
 from .models import Board, Product, Profile
@@ -47,16 +49,20 @@ class BoardDetailView(DetailView):
 
 
 class BoardCreateView(CreateView):
-    template_name = 'website/board/edit.html'
+    template_name = 'website/board/new.html'
     model = Board
-    fields = ['title', 'text', ]
-    success_url = '/board/'
+    fields = ['title', 'writer', 'text', ]
+    success_url = reverse_lazy('board-list')
+
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 
 class BoardUpdateView(UpdateView):
     template_name = 'website/board/edit.html'
     model = Board
-    fields = ['title', 'text', ]
+    fields = ['title', 'writer', 'text', ]
     success_url = '/board/'
 
 
