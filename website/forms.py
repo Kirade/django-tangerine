@@ -1,7 +1,7 @@
 from django import forms
 from .models import Board, Profile
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
 class BoardForm(forms.ModelForm):
@@ -12,7 +12,11 @@ class BoardForm(forms.ModelForm):
 
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField()
+
+    email = forms.EmailField(
+        widget=forms.EmailInput,
+    )
+
     address = forms.CharField(max_length=100)
     phone_number = forms.CharField(max_length=20)
     full_name = forms.CharField(max_length=20)
@@ -36,3 +40,11 @@ class RegisterForm(UserCreationForm):
             profile.save()
 
         return user
+
+
+class MyPageForm(RegisterForm):
+
+    class Meta:
+        model = User
+        fields = ('username', 'password1', 'password2', 'email', 'full_name', 'address', 'phone_number',)
+

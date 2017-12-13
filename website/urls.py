@@ -22,5 +22,10 @@ urlpatterns = [
          auth_views.logout,
          name='logout',
          kwargs={'next_page': settings.LOGOUT_REDIRECT_URL, }),
-
+    path('registration/<int:pk>/mypage/',
+         views.UserChangeView.as_view(),
+         name='mypage', ),
+    path('registration/changesuccess/',
+         views.ChangeSuccessView.as_view(),
+         name = 'change_success'),
 ]
