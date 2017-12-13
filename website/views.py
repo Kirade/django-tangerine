@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
-
-from .models import Board, Product
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+from .forms import RegisterForm, MyPageForm
+from .models import Board, Product, Profile
 
 
 class IndexView(TemplateView):
@@ -65,3 +66,26 @@ class OrderView(TemplateView):
 
 class FaqView(TemplateView):
     template_name = 'website/faq/index.html'
+
+
+class RegisterView(CreateView):
+    template_name='website/registration/register.html'
+    form_class = RegisterForm
+    success_url = reverse_lazy('login')
+
+
+class UserChangeView(UpdateView):
+    template_name='website/registration/mypage.html'
+    model = User
+    form_class = MyPageForm
+    success_url = reverse_lazy('change_success')
+
+    def get_initial(self):
+        obj = self.get_object()
+        profile = Profile.objects.get(user_id=obj.id)
+        initial = {'full_name': profile.full_name, 'address': profile.address, 'phone_number': profile.phone_number}
+        return initial
+
+
+class ChangeSuccessView(TemplateView):
+    template_name = 'website/registration/change_success.html'

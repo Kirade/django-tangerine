@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 {%  load staticfiles %}
 <html>
-<head>
-    <meta charset="UTF-8">
 
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+{% include "website/_head.html" %}
 
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/default.css' %}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{% static 'css/fonts.css' %}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="shortcut icon" href="{% static 'favicon.jpeg' %}"/>
-
-    <title>감귤이야기</title>
-</head>
 <body>
 
-<div id="header-wrapper">
-	<div id="header" class="container">
-		<div id="logo">
-			<span class="icon icon-group"></span>
-			<h1><a href="#">감귤이야기</a></h1>
-			<span>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></span>
-		</div>
-		<div id="triangle-up"></div>
-	</div>
-</div>
+<header>
+  <div class="container-fluid">
+    <div class="text-center">
+      <i class="fa fa-users fa-5x" aria-hidden="true"></i>
+    </div>
+  <h1 class="text-center">감귤이야기</h1>
+  </div>
+</header>
 
-<div id="menu-wrapper">
-		<div id="menu">
-			<ul>
-				<li class="current_page_item"><a href="{% url 'index' %}" accesskey="1" title="">홈페이지</a></li>
-				<li><a href="{% url 'intro' %}" accesskey="2" title="">농장 소개</a></li>
-                <li><a href="{% url 'product-list' %}" accesskey="3" title="">상품 구매</a></li>
-				<li><a href="{% url 'board-list' %}" accesskey="4" title="">게시판</a></li>
-				<li><a href="{% url 'order' %}" accesskey="5" title="">주문/배송조회</a></li>
-				<li><a href="{% url 'faq' %}" accesskey="6" title="">FAQ</a></li>
-			</ul>
-		</div>
-</div>
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid" >
+    <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    </button>
+    <!-- navbar에 이미지 삽입 가능 -->
+    <a class="navbar-brand" href="#">
+    <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+    </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" >
+      <li><a href="{% url 'index' %}" title="">홈페이지</a></li>
+      <li><a href="{% url 'intro' %}" title="">농장 소개</a></li>
+      <li><a href="{% url 'product-list' %}" title="">상품 구매</a></li>
+      <li><a href="{% url 'board-list' %}" title="">게시판</a></li>
+      <li><a href="{% url 'order' %}" title="">주문/배송조회</a></li>
+      <li><a href="{% url 'faq' %}" title="">FAQ</a></li>
+      {% if user.is_active %}
+        <li><a href="{% url 'mypage' pk=user.pk %}">Hi! {{ user.username }} </a></li>
+        <li><a href="{% url 'logout' %}" title="">로그아웃</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}" title="">로그인</a></li>
+        <li><a href="{% url 'register' %}" title="">회원가입</a></li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
 
 {% block content %}
 {%  endblock %}
 
-<div id="stamp" class="container">
-	<div class="hexagon"><span class="icon icon-wrench"></span></div>
-</div>
-<div id="copyright" class="container">
-	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
-</div>
+<footer>
+  <div class="container-fluid">
+    <div class="footer">
 
+    </div>
+  </div>
+</footer>
 </body>
 </html>
