@@ -26,7 +26,30 @@
       </tbody>
     </table>
 
+    <div class=" col-xs-offset-5 col-xs-7">
+    {% if is_paginated %}
+      <ul class="pagination">
+        <li>
+          {% if page_obj.has_previous %}
+            <a href="{% url 'board-list' %}?page={{ page_obj.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+          {% endif %}
+        </li>
+        {% for i in page_obj.paginator.page_range %}
+          <li {% if page_obj.number == i %} class="active"{% endif %}>
+            <a href="{% url 'board-list' %}?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+          </li>
+        {% endfor %}
+        <li>
+          {% if page_obj.has_next %}
+            <a href="{% url 'board-list' %}?page={{ page_obj.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+          {% endif %}
+        </li>
+      </ul>
+    {% endif %}
+    </div>
+
     <button class="btn btn-default"><a href="{% url 'board-new'%}" role="button">글쓰기</a></button>
+
   </div>
 
 {% endblock %}

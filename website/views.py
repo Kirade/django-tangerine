@@ -40,6 +40,12 @@ class BoardListView(ListView):
     template_name = 'website/board/list.html'
     model = Board
     context_object_name = 'board_obj_list'
+    paginate_by = 1
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['range'] = range(1,10)
+        return context
 
 
 class BoardDetailView(DetailView):
