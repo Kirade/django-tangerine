@@ -36,6 +36,12 @@ class ProductListView(ListView):
     context_object_name = 'product_obj_list'
 
 
+class ProductDetailView(DetailView):
+    template_name = 'website/product/detail.html'
+    model = Product
+    context_object_name = 'product_obj'
+
+
 class BoardListView(ListView):
     template_name = 'website/board/list.html'
     model = Board
