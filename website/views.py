@@ -40,7 +40,7 @@ class BoardListView(ListView):
     template_name = 'website/board/list.html'
     model = Board
     context_object_name = 'board_obj_list'
-    paginate_by = 1
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -52,6 +52,13 @@ class BoardDetailView(DetailView):
     template_name = 'website/board/detail.html'
     model = Board
     context_object_name = 'board_obj'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs['pk']
+        current_board_hit = Board.objects.get(id=pk)
+        Board.objects.filter(id=pk).update(hit=current_board_hit.hit + 1)
+        return context
 
 
 class BoardCreateView(CreateView):
