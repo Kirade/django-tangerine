@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
   <div class="container-fluid">
     <p class="lead text-center">상품 목록 </p>
 
@@ -20,23 +19,10 @@
           </div>
         </div>
 
-      {% if forloop.counter|divisibleby:3 %}
+      {% if forloop.counter|divisibleby:3 or forloop.last%}
         </div>
       {% endif %}
     {% endfor %}
   </div>
 
-
-
-
-
-{#    <div id="wrapper">#}
-{#        <h1>Product 리스트 페이지입니다.</h1>#}
-{#        {% for product in product_obj_list %}#}
-{#            상품명 : {{ product.title }}<br/>#}
-{#            이미지 : <img src="{{ product.image.url }}"><br/>#}
-{#            <br/>#}
-{#        {% endfor %}#}
-{##}
-{#    </div>#}
 {% endblock %}

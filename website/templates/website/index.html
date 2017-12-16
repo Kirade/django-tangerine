@@ -1,8 +1,40 @@
 {% extends 'website/base.html' %}
 
 {% block content %}
-<div class="container-fluid">
-  <p class="lead text-center">홈페이지</p>
-</div>
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" id="index_icon"></span>
+          <h3>소개</h3>
+          <p>가나다라마바사아</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <i class="fa fa-truck" id="index_icon"></i>
+          <h3>상품주문</h3>
+          <p>가나다라마바사아</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <span class="glyphicon glyphicon-phone-alt" aria-hidden="true" id="index_icon"></span>
+          <h3>문의</h3>
+          <p>가나다라마바사아</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 
 {% endblock %}
+
+
+{# box 3 개, 각 영역 나누고 길피콘 이용해서 아이콘 표시 그림은 없고 젬ㄱ 밑 간단 설명 추가, 클릭시 해당 페이지 이동 #}
