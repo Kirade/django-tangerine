@@ -1,7 +1,28 @@
 {% extends 'website/base.html' %}
 
 {% block content %}
-    <div id="wrapper">
+
+  <div class="container-fluid">
+    <form method="POST" class="form-horizontal">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="{{ form.title.id_for_label }}" class="col-sm-4 control-label">제목 : </label>
+        <div class="col-sm-4">
+        <input type="text" class="form-control" name="title" maxlength="150" autofocus required id="id_title", value="{{ form.title.value }}">
+      </div>
+      </div>
+    </form>
+  {{ form.as_p }}
+  </div>
+
+
+
+
+
+
+
+
+  <div id="wrapper">
         <h1>New post</h1>
         <form method="POST" class="board-form">{% csrf_token %}
             {{ form.as_p }}

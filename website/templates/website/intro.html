@@ -1,7 +1,35 @@
 {% extends 'website/base.html' %}
 
 {% block content %}
-    <div id="wrapper">
-        <h1>소개 페이지 입니다.</h1>
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <i class="fa fa-id-card-o" id="index_icon"></i>
+          <h3>인사</h3>
+          <p>인사 description</p>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <i class="fa fa-map-o" id="index_icon"></i>
+          <h3>농장 위치</h3>
+          <p>구글 맵 or 주소</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <i class="fa fa-check" id="index_icon"></i>
+          <h3>감귤 상세</h3>
+          <p>품종, 당도</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 {% endblock %}
