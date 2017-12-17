@@ -31,6 +31,7 @@ class Profile(User):
     address = models.CharField(max_length=200, null=True)
     phone_number = models.CharField(max_length=20, null=True)
     full_name = models.CharField(max_length=20, null=True)
+    subscribe = models.BooleanField(default=False)
 
     objects = ProfileManager()
 

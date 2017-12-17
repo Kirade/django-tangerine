@@ -21,9 +21,13 @@ class RegisterForm(UserCreationForm):
     phone_number = forms.CharField(max_length=20)
     full_name = forms.CharField(max_length=20)
 
+    subscribe = forms.BooleanField(
+        widget=forms.CheckboxInput,
+    )
+
     class Meta:
         model = User
-        fields = ('username','password1','password2', 'email', 'full_name', 'address', 'phone_number',)
+        fields = ('username','password1','password2', 'email', 'full_name', 'address', 'phone_number', 'subscribe')
 
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
@@ -37,6 +41,7 @@ class RegisterForm(UserCreationForm):
             profile.address = self.cleaned_data['address']
             profile.phone_number = self.cleaned_data['phone_number']
             profile.full_name = self.cleaned_data['full_name']
+            profile.subscribe = self.cleaned_data['subscribe']
             profile.save()
 
         return user

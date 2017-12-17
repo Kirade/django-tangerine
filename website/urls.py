@@ -14,6 +14,7 @@ urlpatterns = [
     path('board/<int:pk>/edit/', views.BoardUpdateView.as_view(), name='board-edit'),
     path('order/', views.OrderView.as_view(), name='order'),
     path('faq/', views.FaqView.as_view(), name='faq'),
+    path('register/terms/', views.RegisterTermsView.as_view(), name='register-terms'),
     path('register/', views.RegisterView.as_view(), name='register'),
     path('registration/login/',
          auth_views.login,

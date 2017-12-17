@@ -93,6 +93,10 @@ class FaqView(TemplateView):
     template_name = 'website/faq/index.html'
 
 
+class RegisterTermsView(TemplateView):
+    template_name = 'website/registration/terms.html'
+
+
 class RegisterView(CreateView):
     template_name='website/registration/register.html'
     form_class = RegisterForm
