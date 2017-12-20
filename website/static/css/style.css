@@ -21,6 +21,18 @@
     font-size:50px;
 }
 
+#content-box {
+    min-height: 100%;
+    margin: -100px 0 -50px;
+}
+*html #content-box {
+    height: 100%;
+}
+
+#content {
+    padding: 100px 0 50px;
+}
+
 .embed-container{
     position: relative;
     padding-bottom: 56.25%;
@@ -84,14 +96,18 @@ header{
     padding-bottom: 30px;
     padding-right: 0;
     padding-left: 0;
+    height: 100px;
+    position: relative;
+    z-index: 1;
 }
+
+html, body { height: 100%; margin: 0; padding: 0; }
+
+
 
 footer{
     background-color: #229922;
-    padding-top: 40px;
-    padding-bottom: 60px;
-    padding-right: 0;
-    padding-left: 0;
+    height:50px;
 }
 
 header i{
