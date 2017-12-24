@@ -9,6 +9,10 @@
     background-color: #29a329;
 }
 
+#background_white{
+    background-color: white;
+}
+
 #text_white{
     color: white;
 }
@@ -96,7 +100,6 @@ header{
     padding-bottom: 30px;
     padding-right: 0;
     padding-left: 0;
-    height: 100px;
     position: relative;
     z-index: 1;
 }
@@ -107,7 +110,7 @@ html, body { height: 100%; margin: 0; padding: 0; }
 
 footer{
     background-color: #229922;
-    height:50px;
+    min-height:50px;
 }
 
 header i{
