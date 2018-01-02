@@ -1,7 +1,19 @@
 language: python
+
 python:
     - "3.6"
+
+services: mysql
+
+env:
+  global:
+    - BUILD_ON_TRAVIS=true
+
 install:
     - pip install -r requirements.txt
+
+before_script:
+  - mysql -e 'create database travis_ci_db;
+
 script:
     - python manage.py test

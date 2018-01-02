@@ -8,11 +8,40 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+if os.getenv('BUILD_ON_TRAVIS',None):
+    SECRET_KEY = 'MYSECRETKEY'
+    DEBUG = False
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+    DATABASES = {
+        'default':{
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'travis_ci_db',
+            'USER': 'travis',
+            'PASSWORD': '',
+            'HOST': '127.0.0.1',
+        }
+    }
+else:
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = os.environ['SECRET_KEY']
+
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+
+
+    # Database
+    # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
+    # mysql 기본 엔진 innoDB
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'OPTIONS': {
+                'read_default_file': os.path.join(BASE_DIR, 'database.cnf'),
+            }
+        }
+    }
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -59,19 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tangerine.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-# mysql 기본 엔진 innoDB
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(BASE_DIR, 'database.cnf'),
-        }
-    }
-}
 
 
 # Password validation
