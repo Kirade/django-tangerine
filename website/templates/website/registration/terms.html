@@ -254,7 +254,7 @@
 
     <div class="form-group text-center">
       <label for="agree" class="control-label"></label>
-      <input type="checkbox" onchange="document.getElementById('agree').disabled = !this.checked;" />
+      <input type="checkbox"/>
       회원가입 약관에 동의합니다.
     </div>
 
@@ -265,5 +265,16 @@
 
   </form>
 </div>
+
+  <script>
+    $('input').change(function(){
+        if($('input').is(":checked")){
+            $('#agree').attr("disabled",false);
+        }else{
+            $('#agree').attr("disabled",true);
+        }
+
+    })
+</script>
 
 {% endblock %}
