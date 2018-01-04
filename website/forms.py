@@ -32,9 +32,8 @@ class RegisterForm(UserCreationForm):
     def save(self, commit=True):
         user = super(RegisterForm, self).save(commit=False)
 
-        user.email = self.cleaned_data['email']
-
         if commit:
+            user.email = self.cleaned_data['email']
             user.save()
 
             profile = Profile.objects.get(user_id=user.id)

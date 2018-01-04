@@ -15,25 +15,12 @@ class Board(models.Model):
         return self.title
 
 
-class ProfileManager(models.Manager):
-    def create_profile(self, user_instance):
-        user = self.create(user=user_instance)
-        user.username = user_instance.username
-        user.email = user_instance.email
-        user.password = user_instance.password
-        user.first_name = user_instance.first_name
-        user.last_name = user_instance.last_name
-        return user
-
-
-class Profile(User):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=200, null=True)
     phone_number = models.CharField(max_length=20, null=True)
     full_name = models.CharField(max_length=20, null=True)
     subscribe = models.BooleanField(default=False)
-
-    objects = ProfileManager()
 
     def _str_(self):
         return self.user.username
