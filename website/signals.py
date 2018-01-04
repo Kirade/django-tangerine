@@ -9,7 +9,6 @@ from .models import Product, Profile
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
-        print("Create Profile in signal.py!")
 
 
 @receiver(post_save, sender=User)
