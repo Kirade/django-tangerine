@@ -8,6 +8,7 @@
       <img class="img-rounded center-block" src="{{ product_obj.image.url }}" >
     </div>
     <div class="product-description">
+      <p>상품명 : {{ product_obj.title }}</p>
       <p>설명 : {{ product_obj.description }}</p>
       <p>가격 : ₩{{ product_obj.price }}</p>
       <p>남은 수량 : {{ product_obj.stock_left }}</p>

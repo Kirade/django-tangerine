@@ -12,7 +12,14 @@ def get_dictionary_value(dictionary, key):
 def comma_separator(price):
     price = str(price)
     str_price = str()
-    for i in range(1, len(price) + 1):
-        if i % 3 == 0:
-            str_price = price[:-i] + ',' + price[-i:]
+
+    for i in range(1, len(price)+1):
+        if i == len(price):
+            str_price = price[-i] + str_price
+        else:
+            if i % 3 == 0:
+                str_price = ',' + price[-i] + str_price
+            else:
+                str_price = price[-i] + str_price
+
     return str_price
