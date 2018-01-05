@@ -24,11 +24,6 @@ class IndexView(TemplateView):
 class IntroView(TemplateView):
     template_name = 'website/intro.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['dummy'] = 'dummy'
-        return context
-
 
 class ProductListView(ListView):
     template_name = 'website/product/list.html'
