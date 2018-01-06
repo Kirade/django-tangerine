@@ -2,6 +2,8 @@ from django.test import TestCase
 from django.urls import reverse
 from .functions import create_product_model
 
+from website.models import Product
+
 
 class ProductListViewTest(TestCase):
 
@@ -55,24 +57,3 @@ class ProductListViewTest(TestCase):
         response = self.client.get(reverse('product-list'))
         self.assertTemplateUsed(response, 'website/product/list.html')
 
-
-class ProductListViewPaginationTest(TestCase):
-
-    @classmethod
-    def setUpTestData(cls):
-        number_of_product = 15
-        for product_num in range(number_of_product):
-            create_product_model(title=product_num)
-
-    def test_pagination_is_ten(self):
-        response = self.client.get(reverse('product-list'))
-        self.assertTrue('is_paginated' in response.context)
-        # self.assertTrue(response.context['is_paginated'])
-        # self.assertTrue(len(response.context['product_obj_list']) == 10)
-
-    def test_lists_all_product(self):
-        response = self.client.get(reverse('product-list') + '?page=2')
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('is_paginated' in response.context)
-        # self.assertTrue(response.context['is_paginated'])
-        # self.assertTrue(len(response.context['product_obj_list']) == 5)

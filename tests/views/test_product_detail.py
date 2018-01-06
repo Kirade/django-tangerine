@@ -14,7 +14,6 @@ class ProductDetailViewTest(TestCase):
         """
         Test page status code
         """
-
         self.assertEqual(self.response.status_code, 200)
 
     def test_page_context(self):
@@ -25,3 +24,14 @@ class ProductDetailViewTest(TestCase):
         self.assertContains(self.response, "test_desc")
         self.assertContains(self.response, "test_img")
         self.assertContains(self.response, 0)
+
+
+"""
+Test 해야할 것들
+
+바로 구매 혹은, 장바구니 선택했을때 이동할 페이지들 만든 후
+
+해당 페이지로 리다이렉트가 정상적으로 진행되는지
+-> 로그인시 정상진행
+-> 미 로그인시 로그인 페이지 진입 후 로그인 성공하면 해당페이지 리다이렉션
+"""
