@@ -1,9 +1,11 @@
 {% extends 'website/base.html' %}
 
 {%  block content %}
-    <div id="wrapper">
-    {{ board_obj.text }}<br/>
+<div class="container-fluid">
+  {{ board_obj.text }}<br/>
+  {{ board_obj.title }}<br/>
+  {{ board_obj.writer }}<br/>
 
     <a href = "{% url 'board-edit' pk=board_obj.pk %}">게시글 수정</a>
-    </div>
+</div>
 {% endblock %}

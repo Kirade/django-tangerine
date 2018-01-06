@@ -7,8 +7,8 @@ from .functions import create_product_model
 class ProductDetailViewTest(TestCase):
 
     def setUp(self):
-        self.product = create_product_model()
-        self.response = self.client.get(reverse('product-detail', args=(self.product.id,)))
+        product = create_product_model()
+        self.response = self.client.get(reverse('product-detail', args=(product.id,)))
 
     def test_status_code(self):
         """
