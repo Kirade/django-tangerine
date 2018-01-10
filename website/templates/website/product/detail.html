@@ -14,8 +14,8 @@
       <p>가격 : ₩{{ product_obj.price|comma_separator }}</p>
       <p>남은 수량 : {{ product_obj.stock_left }}</p>
 
-      <button class="btn btn-default"><a href="#" role="button">바로 주문</a></button>
-      <button class="btn btn-default"><a href="#" role="button">장바구니</a></button>
+      <button class="btn btn-default"><a href="{% url 'product-buy' %}" role="button">바로 주문</a></button>
+      <button class="btn btn-default"><a href="{% url 'product-cart' %}" role="button">장바구니</a></button>
     </div>
 
 

@@ -25,6 +25,16 @@ class ProductDetailViewTest(TestCase):
         self.assertContains(self.response, "test_img")
         self.assertContains(self.response, 0)
 
+    def test_buy_button(self):
+        """
+        Test buy button
+        """
+
+    def test_cart_button(self):
+        """
+        Test cart button
+        """
+
 
 """
 Test 해야할 것들
