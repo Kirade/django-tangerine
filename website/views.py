@@ -1,7 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, FormView
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -35,6 +35,18 @@ class ProductDetailView(DetailView):
     template_name = 'website/product/detail.html'
     model = Product
     context_object_name = 'product_obj'
+
+
+class ProductBuyView(FormView):
+    template_name = 'website/product/buy.html'
+
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+
+class ProductCartView(TemplateView):
+    template_name = 'website/product/cart.html'
 
 
 class BoardListView(ListView):

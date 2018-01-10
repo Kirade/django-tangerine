@@ -1,7 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
-
 from .functions import create_product_model
+
+from website.models import Product
 
 
 class ProductListViewTest(TestCase):
@@ -52,4 +53,7 @@ class ProductListViewTest(TestCase):
         self.assertContains(response, '1,000,000')
         self.assertContains(response, '10,000,000')
 
+    def test_correct_template(self):
+        response = self.client.get(reverse('product-list'))
+        self.assertTemplateUsed(response, 'website/product/list.html')
 

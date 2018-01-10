@@ -8,6 +8,8 @@ urlpatterns = [
     path('intro/', views.IntroView.as_view(), name='intro'),
     path('product/', views.ProductListView.as_view(), name='product-list'),
     path('product/detail/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
+    path('product/buy/', views.ProductBuyView.as_view(), name='product-buy'),
+    path('product/cart/', views.ProductCartView.as_view(), name='product-cart'),
     path('board/', views.BoardListView.as_view(), name='board-list'),
     path('board/detail/<int:pk>/', views.BoardDetailView.as_view(), name='board-detail'),
     path('board/new/', views.BoardCreateView.as_view(), name='board-new'),
@@ -29,5 +31,5 @@ urlpatterns = [
          name='mypage', ),
     path('registration/changesuccess/',
          views.ChangeSuccessView.as_view(),
-         name = 'change_success'),
+         name='change_success'),
 ]
