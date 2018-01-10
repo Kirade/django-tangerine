@@ -1,0 +1,46 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+
+  <div class="container-fluid" id="padding_bottom">
+      <div class="col-sm-offset-4 col-sm-8">
+      {% if form.errors %}
+        <mark>Form Validation Error.</mark>
+         {{ form.errors }}
+      {% endif %}
+      </div>
+  </div>
+
+  <div class="container-fluid">
+    <form method="POST" class="form-horizontal" action="{% url 'board-new' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="{{ form.title.id_for_label }}" class="col-sm-4 control-label">제목 : </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="title" maxlength="100" autofocus required id="id_title", placeholder="제목을 입력하세요">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="{{ form.writer.id_for_label }}" class="col-sm-4 control-label">글쓴이 : </label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="writer" maxlength="20" readonly required id="id_writer" value="{{ user.username }}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="{{ form.text.id_for_label }}" class="col-sm-4 control-label">내용 : </label>
+        <div class="col-sm-4">
+          <textarea class="form-control" name="text" rows="5" id="id_text"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-8">
+            <button type="submit" class="btn btn-success">게시글 등록</button>
+            <button type="button" class="btn btn-primary"><a href="{% url 'board-list' %}" id="text_white" role="button">취소</a></button>
+          </div>
+        </div>
+    </form>
+
+  </div>
+
+{% endblock %}
