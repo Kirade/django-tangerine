@@ -47,6 +47,10 @@ h6 {
 section {
   padding: 8rem 0; }
 
+#about {
+  padding: 6rem 0;
+}
+
 .section-heading {
   margin-top: 0; }
 
@@ -134,12 +138,46 @@ body {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  background-image: url("../img/header.jpg");
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
+  /*background-image: url("../img/tangerine_background.jpg");*/
+  /*background-position: center center;*/
+  /*-webkit-background-size: cover;*/
+  /*-moz-background-size: cover;*/
+  /*-o-background-size: cover;*/
+  /*background-size: cover;*/
+  position: relative;
+}
+  header.masthead:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("../img/tangerine_background.jpg");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: -2;
+  }
+
+  header.masthead:after {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5),
+        inset 0 0 100px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+
   header.masthead hr {
     margin-top: 30px;
     margin-bottom: 30px; }
@@ -230,3 +268,8 @@ header.masthead {
     background-color: #ee4b28 !important; }
   .btn-primary:active, .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important; }
+
+
+.padding_bottom {
+  padding-bottom : 1em;
+}
