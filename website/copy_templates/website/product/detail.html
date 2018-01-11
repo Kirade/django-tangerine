@@ -1,0 +1,30 @@
+{% extends 'website/base.html' %}
+{% load website_tags %}
+
+{% block content %}
+<div class="container-fluid">
+  <p class="lead text-center">상품 소개</p>
+  <div class="product-box">
+    <div class="product-image">
+      <img class="img-rounded center-block" src="{{ product_obj.image.url }}" >
+    </div>
+    <div class="product-description">
+      <p>상품명 : {{ product_obj.title }}</p>
+      <p>설명 : {{ product_obj.description }}</p>
+      <p>가격 : ₩{{ product_obj.price|comma_separator }}</p>
+      <p>남은 수량 : {{ product_obj.stock_left }}</p>
+
+      <button class="btn btn-default"><a href="{% url 'product-buy' %}" role="button">바로 주문</a></button>
+      <button class="btn btn-default"><a href="{% url 'product-cart' %}" role="button">장바구니</a></button>
+    </div>
+
+
+  </div>
+
+  <!-- 상품 상세 설명 & 이미지 -->
+  <div>
+    <p>상세 이미지 나열</p>
+
+  </div>
+</div>
+{% endblock %}

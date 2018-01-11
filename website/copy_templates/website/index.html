@@ -1,0 +1,45 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" id="index_icon"></span>
+          <h3><mark>소개</mark></h3>
+          <br/>
+          <p>안녕하세요?<br/><a href="{% url 'intro' %}"><strong>감귤이야기</strong></a>에서는 제주도의 농장에서 생산된 감귤을<br/>택배를 통해 배송해드리는 서비스 입니다.</p>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <i class="fa fa-truck" id="index_icon"></i>
+          <h3><mark>상품주문</mark></h3>
+          <br/>
+          <p>판매하는 상품들을 살펴보고 주문하시고 싶으시다면,<br/> 상단의 <a href="{% url 'product-list' %}"><strong>상품구매</strong></a> 메뉴를 클릭해 주세요.</p>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="index-box text-center">
+          <span class="glyphicon glyphicon-phone-alt" aria-hidden="true" id="index_icon"></span>
+          <h3><mark>문의</mark></h3>
+          <br/>
+          <p>궁금하신 점이 있으시다면, 상단의 <a href="{% url 'faq' %}"><strong>FAQ</strong></a>메뉴를 참고하시거나,<br/>jay.jaeyoung@gmail.com으로 연락부탁드립니다.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+{% endblock %}
+
+
+{# box 3 개, 각 영역 나누고 길피콘 이용해서 아이콘 표시 그림은 없고 젬ㄱ 밑 간단 설명 추가, 클릭시 해당 페이지 이동 #}
