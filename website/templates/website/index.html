@@ -210,7 +210,28 @@
     <section class="bg-dark text-white">
       <div class="container text-center">
         <h2 class="mb-4">간단한 설문을 통해 주문서를 작성하세요!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="#">작성하기</a>
+        <a class="btn btn-light btn-xl sr-button" href="#" data-toggle="modal" data-target="#myModal">작성하기</a>
+
+        <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
       </div>
     </section>
 
