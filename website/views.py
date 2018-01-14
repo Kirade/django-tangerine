@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from .forms import RegisterForm, MyPageForm
-from .models import Board, Product, Profile
+from .models import Board, Product, Profile, Order
 from django.shortcuts import render
 
 
@@ -124,10 +124,22 @@ class ChangeSuccessView(TemplateView):
 
 
 def order_new(request):
-    print(request.GET)
-    for item in request.GET:
-        print(item)
-        print(type(item))
-        print(request.GET[item])
-        print(type(request.GET[item]))
-    return render(request,'website/test.html')
+
+    if request.method == 'GET':
+        order = Order.objects.create(
+            product=request.GET['product'],
+            count=request.GET['product-count'],
+            name=request.GET['recipient-name'],
+            tel=request.GET['recipient-tel'],
+            address=request.GET['recipient-addr'],
+            email=request.GET['email']
+        )
+
+        order.save(commit=True)
+
+    else:
+        order = None
+
+    return render(request,'website/test.html', {
+        'order': order
+    })
