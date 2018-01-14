@@ -8,6 +8,7 @@ from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from .forms import RegisterForm, MyPageForm
 from .models import Board, Product, Profile
+from django.shortcuts import render
 
 
 class IndexView(TemplateView):
@@ -120,3 +121,13 @@ class UserChangeView(UpdateView):
 
 class ChangeSuccessView(TemplateView):
     template_name = 'website/registration/change_success.html'
+
+
+def order_new(request):
+    print(request.GET)
+    for item in request.GET:
+        print(item)
+        print(type(item))
+        print(request.GET[item])
+        print(type(request.GET[item]))
+    return render(request,'website/test.html')
