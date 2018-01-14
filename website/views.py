@@ -132,10 +132,10 @@ def order_new(request):
             name=request.GET['recipient-name'],
             tel=request.GET['recipient-tel'],
             address=request.GET['recipient-addr'],
-            email=request.GET['email']
+            email=request.GET['recipient-email']
         )
 
-        order.save(commit=True)
+        order.save()
 
     else:
         order = None
