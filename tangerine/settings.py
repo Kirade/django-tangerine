@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website.apps.WebsiteConfig',
+    'django_extensions',
+    'website',
 ]
 
 MIDDLEWARE = [
@@ -73,7 +74,7 @@ ROOT_URLCONF = 'tangerine.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'website/templates'), ],
+        'DIRS': [os.path.join(BASE_DIR, 'website', 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
