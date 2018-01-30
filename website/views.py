@@ -1,7 +1,8 @@
 from django.views.generic.base import TemplateView
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
+from django.core.exceptions import ValidationError
 from .forms import OrderForm
+
 
 
 
@@ -22,8 +23,7 @@ def order_new(request):
             form.save()
             return render(request, 'website/order_success.html')
         else:
-            raise ValueError
-            # return HttpResponse('Invalid Form')
+            raise ValidationError('Invalid Form')
 
     else:
         form = OrderForm()

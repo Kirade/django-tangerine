@@ -21,8 +21,9 @@ class OrderForm(forms.ModelForm):
                                                         'placeholder': '연락가능한 번호'}))
     address = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
                                                             'placeholder': '배송받으실 주소'}))
-    email = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
-                                                          'placeholder': '이메일 주소'}))
+    email = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control',
+                                                          'placeholder': '이메일 주소',
+                                                          }))
 
     product.label = "상품"
     product.help_text = "<small class='form-text text-muted'>상품은 한 종류씩 주문이 가능합니다.<br> 여러 종류일 경우 나누어 주문해주세요.</small>"
