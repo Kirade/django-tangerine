@@ -273,3 +273,7 @@ header.masthead {
 .padding_bottom {
   padding-bottom : 1em;
 }
+
+#myModal {
+  color: black;
+}

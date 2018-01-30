@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from .forms import RegisterForm, MyPageForm
-from .models import Board, Product, Profile
+from .models import Board, Product, Profile, Order
+from django.shortcuts import render
 
 
 class IndexView(TemplateView):
@@ -120,3 +121,25 @@ class UserChangeView(UpdateView):
 
 class ChangeSuccessView(TemplateView):
     template_name = 'website/registration/change_success.html'
+
+
+def order_new(request):
+
+    if request.method == 'GET':
+        order = Order.objects.create(
+            product=request.GET['product'],
+            count=request.GET['product-count'],
+            name=request.GET['recipient-name'],
+            tel=request.GET['recipient-tel'],
+            address=request.GET['recipient-addr'],
+            email=request.GET['recipient-email']
+        )
+
+        order.save()
+
+    else:
+        order = None
+
+    return render(request,'website/test.html', {
+        'order': order
+    })

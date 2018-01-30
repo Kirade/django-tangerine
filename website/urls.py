@@ -32,4 +32,8 @@ urlpatterns = [
     path('registration/changesuccess/',
          views.ChangeSuccessView.as_view(),
          name='change_success'),
+    path('order-new/',
+         views.order_new,
+         name='order-new'),
+
 ]
