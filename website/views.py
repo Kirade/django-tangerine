@@ -1,35 +1,33 @@
 from django.views.generic.base import TemplateView
-from .models import Order
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, HttpResponse
+from .forms import OrderForm
+
 
 
 class IndexView(TemplateView):
     template_name = 'website/index.html'
 
-    # 넘기려고 하는 데이터를 context안에 dictionary로 넣을 수 있다.
-    # as_view(extra_context={~})형태로 url 처리과정에서도 정보를 넘겨 받을 수 있다.
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['dummy'] = 'dummy'
+        context['form'] = OrderForm()
         return context
 
 def order_new(request):
 
-    if request.method == 'GET':
-        order = Order.objects.create(
-            product=request.GET['product'],
-            count=request.GET['product-count'],
-            name=request.GET['recipient-name'],
-            tel=request.GET['recipient-tel'],
-            address=request.GET['recipient-addr'],
-            email=request.GET['recipient-email']
-        )
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
 
-        order.save()
+        if form.is_valid():
+            form.save()
+            return render(request, 'website/order_success.html')
+        else:
+            raise ValueError
+            # return HttpResponse('Invalid Form')
 
     else:
-        order = None
+        form = OrderForm()
 
-    return render(request,'website/test.html', {
-        'order': order
+    return render(request, 'website/order_success.html', {
+        'form': form
     })
